@@ -1,13 +1,13 @@
 #!/bin/sh
 
-echo "*****Running unit tests******"
+echo "Running git pre-commit hook"
 
-git stash -q --keep-index
+./gradlew ktlintCheck
 
-./gradlew test
+ktlintCheckStatus=$?
 
-status=$?
-
-git stash pop -q
-
-exit $status
+if [[ktlintCheckStatus -ne 0]] then
+  exit 1
+else
+  exit 0
+fi
