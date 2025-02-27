@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "husky": "^9.1.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./gradlew ktlint"
+    }
+  }
+}
