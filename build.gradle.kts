@@ -43,15 +43,3 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
-
-tasks.register<Copy>("copyPreCommitHook") {
-    description = "Copy pre-commit git hook from the scripts to the .git/hooks folder. "
-    group = "git hooks"
-    outputs.upToDateWhen { false }
-    from("$rootDir/scripts/pre-commit")
-    into("$rootDir/.git/hooks/")
-}
-
-tasks.build {
-    dependsOn ("copyPreCommitHook")
-}
